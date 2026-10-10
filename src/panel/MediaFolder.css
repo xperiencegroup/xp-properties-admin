@@ -1,0 +1,66 @@
+.media-folder {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--color-amarillo);
+  outline: 2px dashed transparent;
+  outline-offset: -2px;
+  transition: outline-color 0.15s, background 0.15s;
+}
+
+.media-folder.is-over {
+  outline-color: var(--color-amarillo);
+  background: rgba(251, 203, 34, 0.07);
+}
+
+.media-folder__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.media-folder__header:focus-visible {
+  outline: 2px solid var(--color-amarillo);
+  outline-offset: -2px;
+}
+
+.media-folder__arrow {
+  color: var(--color-amarillo);
+  width: 1ch;
+}
+
+.media-folder__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.media-folder__meta {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.media-folder__drop-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--color-amarillo);
+  color: var(--color-negro);
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+.media-folder__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0 1.25rem 1.25rem;
+}

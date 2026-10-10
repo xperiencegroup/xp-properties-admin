@@ -1,0 +1,25 @@
+.project-panel__status {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.project-panel__status--error {
+  color: #ff7a6b;
+}
+
+.project-panel__folders {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.project-panel__toast {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 300;
+  padding: 0.8rem 1.2rem;
+  background: var(--color-panel);
+  backdrop-filter: blur(10px);
+  border-top: 3px solid var(--color-amarillo);
+  font-size: 0.9rem;
+}

@@ -1,184 +1,213 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ---------- Login ---------- */
+.login {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.login__panel {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  gap: 1rem;
+  width: min(380px, 100%);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 3px solid var(--color-amarillo);
 }
 
-#next-steps {
+.login__title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.login__lead {
+  margin: -0.5rem 0 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.login__field {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.login__field input {
   width: 100%;
+  min-width: 0;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--color-borde);
+  background: transparent;
+  color: var(--color-blanco);
+  font: inherit;
+  font-size: 1rem;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.login__field input:focus {
+  outline: none;
+  border-color: var(--color-amarillo);
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+.login__user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login__user .mono {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+}
+
+.login__error {
+  margin: 0;
+  color: #ff7a6b;
+  font-size: 0.85rem;
+}
+
+.login__submit {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 0;
+  background: var(--color-amarillo);
+  color: var(--color-negro);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login__submit:disabled {
+  opacity: 0.5;
+}
+
+/* ---------- App ---------- */
+.app {
+  min-height: 100vh;
+}
+
+.app__header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1rem, 3vw, 2.5rem);
+  background: var(--color-panel);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.app__brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app__marca {
+  font-size: 0.75rem;
+  color: var(--color-amarillo);
+}
+
+.app__projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.app__project {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.app__project:hover,
+.app__project:focus-visible {
+  color: var(--color-blanco);
+  border-color: var(--color-borde);
+  outline: none;
+}
+
+.app__project.is-active {
+  background: var(--color-amarillo);
+  color: var(--color-negro);
+  font-weight: 700;
+}
+
+.app__session {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app__email {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.app__logout {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--color-borde);
+  background: transparent;
+  color: var(--color-blanco);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.app__logout:hover,
+.app__logout:focus-visible {
+  border-color: var(--color-amarillo);
+  color: var(--color-amarillo);
+  outline: none;
+}
+
+.app__main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+.app__intro {
+  margin-bottom: 1.75rem;
+}
+
+.app__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.app__hint {
+  margin: 0;
+  max-width: 60ch;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.app__status {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.app__status--error {
+  color: #ff7a6b;
+}
+
+@media (max-width: 640px) {
+  .app__email {
+    display: none;
   }
 }
