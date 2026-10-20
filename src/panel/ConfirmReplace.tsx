@@ -9,7 +9,7 @@ type RowState = 'idle' | 'uploading' | 'done' | 'error'
 type Row = {
   file: File
   target: string // uid del slot destino ('' = sin elegir)
-  reason: 'tarjeta' | 'nombre' | 'número' | null
+  reason: 'tarjeta' | 'nombre' | 'número' | 'único' | null
   state: RowState
   error: string | null
 }
@@ -142,7 +142,7 @@ export default function ConfirmReplace({
                   <span className="confirm-replace__file mono">{r.file.name}</span>
                   <span className="confirm-replace__size mono">{(r.file.size / 1024 / 1024).toFixed(1)} MB</span>
 
-                  {r.reason === 'tarjeta' && slot ? (
+                  {(r.reason === 'tarjeta' || r.reason === 'único') && slot ? (
                     <span className="confirm-replace__target">
                       Reemplaza a <strong>{slot.title}</strong>
                       <span className="mono"> ({baseName(slot.storage_path ?? '')})</span>

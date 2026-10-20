@@ -42,6 +42,7 @@ const FOLDER_TITLES: Record<string, string> = {
   navorbital: 'Navegación orbital',
   vtiproyecto: 'Video tour',
   fotorenders: 'Foto renders',
+  recorrido360: 'Recorrido 360',  
 }
 const FOLDER_ORDER = Object.keys(FOLDER_TITLES)
 
@@ -74,7 +75,13 @@ function codeOrder(path: string | null): number {
   return m ? Number(m[1]) * 2 + (m[2] ? 1 : 0) : 9999
 }
 
+const KEY_TITLES: Record<string, string> = {
+  'image.recorrido360': 'Imagen 360',
+}
+
+
 function assetTitle(key: string): string {
+  if (KEY_TITLES[key]) return KEY_TITLES[key]
   const parts = key.replace(/^video\.(masterplan\.)?(positions\.)?/, '').split('.')
   const last = parts.pop() ?? ''
   return [...parts, SUFFIX[last] ?? last].join(' ')
@@ -145,7 +152,7 @@ export function buildFolders(assets: MediaAssetRecord[], groups: MediaGroupRecor
     }))
 }
 
-export type Match = { slot: Slot; reason: 'nombre' | 'número' }
+export type Match = { slot: Slot; reason: 'nombre' | 'número' | 'único' }
 
 /** Busca a qué archivo de la carpeta corresponde el archivo soltado. */
 export function matchFile(file: File, slots: Slot[]): Match | null {
@@ -158,6 +165,9 @@ export function matchFile(file: File, slots: Slot[]): Match | null {
     const byCode = slots.filter((s) => s.storage_path && codeOf(s.storage_path) === code)
     if (byCode.length === 1) return { slot: byCode[0], reason: 'número' }
   }
+
+  // Carpeta con un solo archivo (ej. Recorrido 360): no hay nada que elegir.
+  if (slots.length === 1) return { slot: slots[0], reason: 'único' }
   return null
 }
 
